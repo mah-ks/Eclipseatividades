@@ -18,9 +18,9 @@ public class Visita {
 
     private JFrame frmPrincipal;
     private final ButtonGroup buttonGroup_1 = new ButtonGroup();
-    private JTable table;
-    private JTextField textField;
-    private JTextField textFM;
+    private JTable tableTabela;
+    private JTextField textDigiteMensagem;
+    private JTextField textFemininoMasculino;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -57,29 +57,29 @@ public class Visita {
         lblTransferirItens_1.setBounds(541, 187, 211, 18);
         frmPrincipal.getContentPane().add(lblTransferirItens_1);
 
-        JList<String> list = new JList<>(listModel1);
-        list.setBackground(SystemColor.desktop);
-        list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        list.setBounds(38, 216, 131, 198);
-        frmPrincipal.getContentPane().add(list);
+        JList<String> list_TransferirItens = new JList<>(listModel1);
+        list_TransferirItens.setBackground(SystemColor.desktop);
+        list_TransferirItens.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        list_TransferirItens.setBounds(38, 216, 131, 198);
+        frmPrincipal.getContentPane().add(list_TransferirItens);
 
         DefaultListModel<String> listModel2 = new DefaultListModel<>();
-        JList<String> list_2 = new JList<>(listModel2);
-        list_2.setBackground(SystemColor.desktop);
-        list_2.setBounds(560, 216, 131, 198);
-        frmPrincipal.getContentPane().add(list_2);
+        JList<String> list_ItensTransferidos = new JList<>(listModel2);
+        list_ItensTransferidos.setBackground(SystemColor.desktop);
+        list_ItensTransferidos.setBounds(560, 216, 131, 198);
+        frmPrincipal.getContentPane().add(list_ItensTransferidos);
 
-        JButton btnConfirmar = new JButton("Confirmar");
-        btnConfirmar.addActionListener(e -> {
-            for (Iterator<String> it = list.getSelectedValuesList().iterator(); it.hasNext();) {
+        JButton btnConfirmarTransferirItens = new JButton("Confirmar");
+        btnConfirmarTransferirItens.addActionListener(e -> {
+            for (Iterator<String> it = list_TransferirItens.getSelectedValuesList().iterator(); it.hasNext();) {
                 String itemSelecionado = it.next();
                 if (!listModel2.contains(itemSelecionado)) {
                     listModel2.addElement(itemSelecionado);
                 }
             }
         });
-        btnConfirmar.setBounds(38, 425, 120, 23);
-        frmPrincipal.getContentPane().add(btnConfirmar);
+        btnConfirmarTransferirItens.setBounds(38, 425, 120, 23);
+        frmPrincipal.getContentPane().add(btnConfirmarTransferirItens);
 
       
         JRadioButton rbtMasculino = new JRadioButton("Masculino");
@@ -98,11 +98,11 @@ public class Visita {
         btnSelecionar.setBounds(378, 634, 89, 23);
         btnSelecionar.addActionListener(e -> {
             if (rbtMasculino.isSelected()) {
-                textFM.setText("O genero Masculino foi selecionado");
+                textFemininoMasculino.setText("O genero Masculino foi selecionado");
             } else if (rbtFeminino.isSelected()) {
-                textFM.setText("O genero Feminino foi selecionado");
+                textFemininoMasculino.setText("O genero Feminino foi selecionado");
             } else {
-                textFM.setText("");
+                textFemininoMasculino.setText("");
                 JOptionPane.showMessageDialog(null, "Selecione uma opção");
             }
         });
@@ -110,8 +110,8 @@ public class Visita {
         frmPrincipal.getContentPane().add(btnSelecionar);
 
      
-        table = new JTable();
-        table.setModel(new DefaultTableModel(
+        tableTabela = new JTable();
+        tableTabela.setModel(new DefaultTableModel(
                 new Object[][]{
                         {1, "Petri"},
                         {2, "Francini"},
@@ -120,9 +120,9 @@ public class Visita {
                 },
                 new String[]{"Código", "Nome"}
         ));
-        JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setBounds(348, 43, 272, 94);
-        frmPrincipal.getContentPane().add(scrollPane);
+        JScrollPane scrollNomeTabela = new JScrollPane(tableTabela);
+        scrollNomeTabela.setBounds(348, 43, 272, 94);
+        frmPrincipal.getContentPane().add(scrollNomeTabela);
 
 
         JCheckBox ckbJornal = new JCheckBox("Jornal");
@@ -157,14 +157,15 @@ public class Visita {
         lblMensagem.setBounds(38, 40, 204, 33);
         frmPrincipal.getContentPane().add(lblMensagem);
 
-        textField = new JTextField();
-        textField.setBounds(38, 70, 201, 20);
-        textField.setColumns(10);
-        frmPrincipal.getContentPane().add(textField);
+        textDigiteMensagem = new JTextField();
+        textDigiteMensagem.setFont(new Font("Serif", Font.PLAIN, 11));
+        textDigiteMensagem.setBounds(38, 70, 201, 20);
+        textDigiteMensagem.setColumns(10);
+        frmPrincipal.getContentPane().add(textDigiteMensagem);
 
         JButton btnMostrar = new JButton("Mostrar mensagem");
         btnMostrar.setBounds(38, 96, 189, 23);
-        btnMostrar.addActionListener(e -> JOptionPane.showMessageDialog(null, textField.getText()));
+        btnMostrar.addActionListener(e -> JOptionPane.showMessageDialog(null, textDigiteMensagem.getText()));
         frmPrincipal.getContentPane().add(btnMostrar);
 
 
@@ -181,67 +182,67 @@ public class Visita {
         btnSair.addActionListener(e -> System.exit(0));
         frmPrincipal.getContentPane().add(btnSair);
         
-        JComboBox<String> comboBox = new JComboBox<>();
-        comboBox.setModel(new DefaultComboBoxModel<>(new String[]{
+        JComboBox<String> comboBoxSelecionarCor = new JComboBox<>();
+        comboBoxSelecionarCor.setModel(new DefaultComboBoxModel<>(new String[]{
             "Selecione Uma cor para a tabela",
             "Roxo",
             "Rosa",
             "Verde",
             "Azul"
         }));
-        comboBox.setBounds(348, 141, 265, 22);
-        frmPrincipal.getContentPane().add(comboBox);
+        comboBoxSelecionarCor.setBounds(348, 141, 265, 22);
+        frmPrincipal.getContentPane().add(comboBoxSelecionarCor);
 
-        comboBox.addActionListener(e -> {
-            String corSelecionada = (String) comboBox.getSelectedItem();
+        comboBoxSelecionarCor.addActionListener(e -> {
+            String corSelecionada = (String) comboBoxSelecionarCor.getSelectedItem();
             if (corSelecionada != null) {
                 switch (corSelecionada) {
                     case "Roxo":
-                        table.setBackground(new Color(153, 50, 204));
-                        table.setForeground(Color.WHITE);
+                        tableTabela.setBackground(new Color(153, 50, 204));
+                        tableTabela.setForeground(Color.WHITE);
                         break;
                     case "Rosa":
-                        table.setBackground(new Color(247, 164, 249));
-                        table.setForeground(Color.BLACK);
+                        tableTabela.setBackground(new Color(247, 164, 249));
+                        tableTabela.setForeground(Color.BLACK);
                         break;
                     case "Verde":
-                        table.setBackground(new Color(144, 238, 144));
-                        table.setForeground(Color.BLACK);
+                        tableTabela.setBackground(new Color(144, 238, 144));
+                        tableTabela.setForeground(Color.BLACK);
                         break;
                     case "Azul":
-                        table.setBackground(new Color(135, 206, 250));
-                        table.setForeground(Color.BLACK);
+                        tableTabela.setBackground(new Color(135, 206, 250));
+                        tableTabela.setForeground(Color.BLACK);
                         break;
                     default:
     
-                        table.setBackground(Color.WHITE);
-                        table.setForeground(Color.BLACK);
+                        tableTabela.setBackground(Color.WHITE);
+                        tableTabela.setForeground(Color.BLACK);
                         break;
                 }
             }
         });
 
         
-        textFM = new JTextField();
-        textFM.setEditable(false);
-        textFM.setBounds(378, 586, 292, 37);
-        frmPrincipal.getContentPane().add(textFM);
-        textFM.setColumns(10);
+        textFemininoMasculino = new JTextField();
+        textFemininoMasculino.setEditable(false);
+        textFemininoMasculino.setBounds(378, 586, 292, 37);
+        frmPrincipal.getContentPane().add(textFemininoMasculino);
+        textFemininoMasculino.setColumns(10);
         
-        JLabel lblNewLabel = new JLabel("Seleção de Itens");
-        lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-        lblNewLabel.setBounds(21, 495, 211, 14);
-        frmPrincipal.getContentPane().add(lblNewLabel);
+        JLabel lblSeleçãodeItens = new JLabel("Seleção de Itens");
+        lblSeleçãodeItens.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
+        lblSeleçãodeItens.setBounds(21, 495, 211, 14);
+        frmPrincipal.getContentPane().add(lblSeleçãodeItens);
         
         JLabel lblTransferirItens = new JLabel("Transferir Itens");
         lblTransferirItens.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
         lblTransferirItens.setBounds(38, 187, 211, 18);
         frmPrincipal.getContentPane().add(lblTransferirItens);
         
-        JLabel lblNewLabel_1 = new JLabel("New label");
-        lblNewLabel_1.setIcon(new ImageIcon(Visita.class.getResource("/imagem/kitty.png")));
-        lblNewLabel_1.setBounds(0, -35, 1005, 703);
-        frmPrincipal.getContentPane().add(lblNewLabel_1);
+        JLabel lblImagem = new JLabel("New label");
+        lblImagem.setIcon(new ImageIcon(Visita.class.getResource("/imagem/kitty.png")));
+        lblImagem.setBounds(0, -35, 1005, 703);
+        frmPrincipal.getContentPane().add(lblImagem);
         
         JLabel lblTransferirItens_2 = new JLabel("Transferir Itens");
         lblTransferirItens_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
@@ -258,9 +259,9 @@ public class Visita {
         });
         menuBar.add(mnNewMenu);
         
-        JMenuItem mntmNewMenuItem = new JMenuItem("Abrir Mensagem");
-        mnNewMenu.add(mntmNewMenuItem);
-        mntmNewMenuItem.addActionListener(e -> {
+        JMenuItem mntmAbrirMensagem = new JMenuItem("Abrir Mensagem");
+        mnNewMenu.add(mntmAbrirMensagem);
+        mntmAbrirMensagem.addActionListener(e -> {
             ImageIcon icon = new ImageIcon("kitty.png");    
             Image img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
             icon = new ImageIcon(img);
@@ -276,9 +277,9 @@ public class Visita {
 
 
         
-        JMenuItem mntmNewMenuItem_1 = new JMenuItem("Abrir Cartão de Visita");
-        mnNewMenu.add(mntmNewMenuItem_1);
-        mntmNewMenuItem_1.addActionListener(new ActionListener() {
+        JMenuItem mntmAbrirCartaodeVisita = new JMenuItem("Abrir Cartão de Visita");
+        mnNewMenu.add(mntmAbrirCartaodeVisita);
+        mntmAbrirCartaodeVisita.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	SegundaTela st = new SegundaTela();
 				st.setVisible(true);

@@ -20,11 +20,11 @@ public class SegundaTela extends JFrame {
         txtpnMariaKarolineDa.setBounds(238, 179, 150, 20);
         getContentPane().add(txtpnMariaKarolineDa);
 
-        JLabel lblNewLabel = new JLabel("Maria Karoline Da Silva");
-        lblNewLabel.setForeground(new Color(168, 129, 91));
-        lblNewLabel.setFont(new Font("Serif", Font.ITALIC, 18));
-        lblNewLabel.setBounds(34, 44, 232, 24);
-        getContentPane().add(lblNewLabel);
+        JLabel lblMeuNome = new JLabel("Maria Karoline Da Silva");
+        lblMeuNome.setForeground(new Color(168, 129, 91));
+        lblMeuNome.setFont(new Font("Serif", Font.ITALIC, 18));
+        lblMeuNome.setBounds(34, 44, 232, 24);
+        getContentPane().add(lblMeuNome);
 
         JLabel lblDesenvolvedora = new JLabel("Desenvolvedora");
         lblDesenvolvedora.setForeground(new Color(168, 129, 91));
@@ -37,26 +37,28 @@ public class SegundaTela extends JFrame {
         separator.setBounds(10, 134, 414, 2);
         getContentPane().add(separator);
 
-        JLabel lblNewLabel_2 = new JLabel("Email: Maria.Silva7@br.bosch.com");
-        lblNewLabel_2.setForeground(new Color(168, 129, 91));
-        lblNewLabel_2.setBounds(34, 160, 250, 14);
-        getContentPane().add(lblNewLabel_2);
+        JLabel lblEmail = new JLabel("Email: Maria.Silva7@br.bosch.com");
+        lblEmail.setFont(new Font("Serif", Font.PLAIN, 11));
+        lblEmail.setForeground(new Color(168, 129, 91));
+        lblEmail.setBounds(34, 160, 250, 14);
+        getContentPane().add(lblEmail);
 
-        JLabel lblNewLabel_5 = new JLabel("M");
-        lblNewLabel_5.setFont(new Font("Serif", Font.PLAIN, 93));
-        lblNewLabel_5.setForeground(new Color(168, 129, 91));
-        lblNewLabel_5.setBounds(249, 134, 84, 102);
-        getContentPane().add(lblNewLabel_5);
+        JLabel lblM = new JLabel("M");
+        lblM.setFont(new Font("Serif", Font.PLAIN, 93));
+        lblM.setForeground(new Color(168, 129, 91));
+        lblM.setBounds(249, 134, 84, 102);
+        getContentPane().add(lblM);
 
-        JLabel lblNewLabel_3 = new JLabel("Celular :(47)988548027");
-        lblNewLabel_3.setForeground(new Color(168, 129, 91));
-        lblNewLabel_3.setBounds(34, 198, 232, 14);
-        getContentPane().add(lblNewLabel_3);
+        JLabel lblCelular = new JLabel("Celular :(47)988548027");
+        lblCelular.setFont(new Font("Serif", Font.PLAIN, 11));
+        lblCelular.setForeground(new Color(168, 129, 91));
+        lblCelular.setBounds(34, 198, 232, 14);
+        getContentPane().add(lblCelular);
 
-        JLabel lblNewLabel_5_1 = new JLabel("K");
-        lblNewLabel_5_1.setForeground(new Color(168, 129, 91));
-        lblNewLabel_5_1.setFont(new Font("Serif", Font.PLAIN, 93));
-        lblNewLabel_5_1.setBounds(327, 134, 84, 102);
-        getContentPane().add(lblNewLabel_5_1);
+        JLabel lblK = new JLabel("K");
+        lblK.setForeground(new Color(168, 129, 91));
+        lblK.setFont(new Font("Serif", Font.PLAIN, 93));
+        lblK.setBounds(327, 134, 84, 102);
+        getContentPane().add(lblK);
     }
 }
